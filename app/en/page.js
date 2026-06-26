@@ -31,12 +31,12 @@ function FeatherLogo() {
   )
 }
 
-export default function Home() {
+export default function HomeEn() {
   // Navigation & Form states
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [inquiryType, setInquiryType] = useState('Allgemeine Anfrage')
+  const [inquiryType, setInquiryType] = useState('General inquiry')
   const [message, setMessage] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -56,46 +56,46 @@ export default function Home() {
       if (res.ok) {
         setIsSubmitted(true)
       } else {
-        setSubmitError(data.error || 'Es gab ein Problem beim Senden. Bitte versuche es erneut.')
+        setSubmitError(data.error || 'There was a problem sending your message. Please try again.')
       }
     } catch (err) {
-      setSubmitError('Verbindung zum Server fehlgeschlagen.')
+      setSubmitError('Failed to connect to the server.')
     } finally {
       setIsLoading(false)
     }
   }
 
-  // Current German schedule data
+  // English schedule data
   const scheduleData = [
     {
-      day: 'Montag',
+      day: 'Monday',
       classes: [
-        { time: '17:30 - 19:00', name: 'Yoga für Anfänger', level: 'Einsteiger' },
-        { time: '19:30 - 21:00', name: 'Yoga für alle', level: 'Alle Level' }
+        { time: '17:30 - 19:00', name: 'Yoga for Beginners', level: 'Beginner' },
+        { time: '19:30 - 21:00', name: 'Yoga for Everyone', level: 'All Levels' }
       ]
     },
     {
-      day: 'Dienstag',
+      day: 'Tuesday',
       classes: [
-        { time: '20:00 - 21:30', name: 'Yoga für alle', level: 'Alle Level' }
+        { time: '20:00 - 21:30', name: 'Yoga for Everyone', level: 'All Levels' }
       ]
     },
     {
-      day: 'Mittwoch',
+      day: 'Wednesday',
       classes: [
-        { time: '19:00 - 20:30', name: 'Yoga für alle', level: 'Alle Level' }
+        { time: '19:00 - 20:30', name: 'Yoga for Everyone', level: 'All Levels' }
       ]
     },
     {
-      day: 'Donnerstag',
+      day: 'Thursday',
       classes: [
-        { time: '19:30 - 21:00', name: 'Yoga für alle / Anfänger', level: 'Einsteiger & Inter.' }
+        { time: '19:30 - 21:00', name: 'Yoga for Everyone / Beginners', level: 'Beg. & Inter.' }
       ]
     },
     {
-      day: 'Freitag',
+      day: 'Friday',
       classes: [
-        { time: '09:00 - 10:30', name: 'Yoga für Anfänger', level: 'Einsteiger' }
+        { time: '09:00 - 10:30', name: 'Yoga for Beginners', level: 'Beginner' }
       ]
     }
   ]
@@ -105,30 +105,30 @@ export default function Home() {
       {/* Navigation Header */}
       <header className="header">
         <div className="nav-container">
-          <a href="#" className="logo-link">
+          <Link href="/en" className="logo-link">
             <FeatherLogo />
             <span>ich lebe mich</span>
-          </a>
+          </Link>
           
           <button 
             className="mobile-menu-toggle" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Menü umschalten"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
           <nav className={`nav-menu-wrapper ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <ul className="nav-menu">
-              <li><a href="#about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Über mich</a></li>
-              <li><a href="#offerings" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Yoga-Stile</a></li>
-              <li><a href="#schedule" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Kursplan</a></li>
-              <li><a href="#pricing" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Preise</a></li>
-              <li><a href="#contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Kontakt</a></li>
-              <li><Link href="/en" className="nav-link" style={{ fontWeight: 'bold' }} onClick={() => setIsMobileMenuOpen(false)}>EN</Link></li>
+              <li><a href="#about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About me</a></li>
+              <li><a href="#offerings" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Yoga Styles</a></li>
+              <li><a href="#schedule" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Schedule</a></li>
+              <li><a href="#pricing" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Pricing</a></li>
+              <li><a href="#contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a></li>
+              <li><Link href="/" className="nav-link" style={{ fontWeight: 'bold' }} onClick={() => setIsMobileMenuOpen(false)}>DE</Link></li>
               <li>
                 <a href="#contact" className="btn btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }} onClick={() => setIsMobileMenuOpen(false)}>
-                  Jetzt anfragen
+                  Inquire Now
                 </a>
               </li>
             </ul>
@@ -140,20 +140,19 @@ export default function Home() {
       <section id="hero" style={{ paddingTop: '7.5rem' }}>
         <div className="container hero-grid">
           <div className="hero-content">
-            <p className="hero-subtitle">Yogastudio Leipzig Leutzsch</p>
-            <h1>Yoga heißt:<br/>„Die Zügel in die Hand nehmen“.</h1>
+            <p className="hero-subtitle">Yoga Studio Leipzig Leutzsch</p>
+            <h1>Yoga means:<br/>"Taking the reins in your hands".</h1>
             <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem' }}>
-              Yoga spricht uns in der Gesamtheit an. Es zeigt Möglichkeiten auf, zu Kraft zu kommen, 
-              Energie aufzutanken, über unser Leben zu reflektieren und Entscheidungen zu treffen. 
-              Es zeigt uns, wie wir verantwortungsvoller und bewusster mit uns umgehen können.
+              Yoga speaks to us as a whole. It shows us opportunities to gather strength, 
+              recharge our energy, reflect on our lives, and make decisions. 
+              It shows us how to treat ourselves with more responsibility and mindfulness.
             </p>
             <div>
-              <a href="#schedule" className="btn btn-primary">Zum Kursplan</a>
-              <a href="#contact" className="btn btn-secondary">Kontakt aufnehmen</a>
+              <a href="#schedule" className="btn btn-primary">View Schedule</a>
+              <a href="#contact" className="btn btn-secondary">Get in Touch</a>
             </div>
           </div>
           <div className="hero-image-container">
-            {/* Visual background image of studio */}
             <img 
               src="https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?auto=format&fit=crop&q=80&w=800" 
               alt="Serene Yoga Studio Space" 
@@ -169,32 +168,31 @@ export default function Home() {
           <div className="about-image-container">
             <img 
               src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800" 
-              alt="Bianka Schümann - Yogalehrerin" 
+              alt="Bianka Schümann - Yoga Teacher" 
               className="about-img" 
             />
           </div>
           <div className="about-content">
-            <p className="hero-subtitle" style={{ marginBottom: '0.5rem' }}>Über die Praxis</p>
+            <p className="hero-subtitle" style={{ marginBottom: '0.5rem' }}>About the Practice</p>
             <h2 style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Bianka Schümann</h2>
             <p style={{ fontWeight: '500', color: 'var(--color-sage)', fontSize: '1.05rem', marginBottom: '1.5rem' }}>
-              Yogalehrerin & Yogatherapeutin • Seit 2010 in eigener Yogapraxis tätig
+              Yoga Teacher & Yoga Therapist • Active in her own yoga practice since 2010
             </p>
             <p>
-              Aus einem kaufmännischen Beruf kommend, hatte ich wie so viele die typischen „Schreibtischbeschwerden“, 
-              weshalb ich mich vor rund 20 Jahren dem Yoga zuwendete. Im Laufe der Jahre reifte in mir der Wunsch, 
-              meine eigene Yogapraxis zu entwickeln. Ich begann 2008 eine Yogalehrer-Ausbildung, in der ich klassisches 
-              Hatha-Yoga erlernte. 
+              Coming from a commercial background, like so many others I suffered from typical "desk-bound complaints," 
+              which is why I turned to yoga about 20 years ago. Over the years, the desire grew in me to develop my own 
+              yoga practice. In 2008, I began a yoga teacher training course where I learned classical Hatha Yoga.
             </p>
             <p>
-              Besonders wichtig ist es mir, ein modernes Yoga zu vermitteln, das unseren heutigen Bedürfnissen angepasst ist. 
-              Ich verbinde in meiner Yogapraxis alle klassischen Yogaelemente je nach individuellem Bedarf zu kräftigenden, 
-              dehnenden oder beruhigenden Einzelsequenzen oder zu einem fließenden Yogaflow.
+              It is particularly important to me to teach a modern yoga that is adapted to our needs today. In my yoga practice, 
+              I combine all classic yoga elements according to individual needs into strengthening, stretching, or calming 
+              sequences or into a flowing yoga flow.
             </p>
             
             <div className="quote-box">
               <p className="quote-text">
-                „Es bedarf keiner besonderen Fähigkeiten, um Yoga zu praktizieren. Jeder kann den Yoga-Weg wählen. 
-                Jeder macht, was er kann, und zwar so gut, wie es jetzt eben geht.“
+                "No special abilities are required to practice yoga. Anyone can choose the yoga path. 
+                Everyone does what they can, and does it as well as they currently can."
               </p>
               <p className="quote-author">Bianka Schümann</p>
             </div>
@@ -205,10 +203,10 @@ export default function Home() {
       {/* Offerings Section */}
       <section id="offerings">
         <div className="container">
-          <h2>Was wir anbieten</h2>
+          <h2>What we offer</h2>
           <p className="section-subtitle">
-            Klassische Yogaelemente angepasst an moderne Bedürfnisse. Jede Klasse wird in kleinen, 
-            persönlichen Gruppen von maximal 10 Teilnehmenden unterrichtet.
+            Classic yoga elements adapted to modern needs. Each class is taught in small, 
+            personal groups of a maximum of 10 participants.
           </p>
           
           <div className="offerings-grid">
@@ -216,16 +214,16 @@ export default function Home() {
               <div className="offering-img-container">
                 <img 
                   src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=500" 
-                  alt="Yoga für Anfänger" 
+                  alt="Yoga for Beginners" 
                   className="offering-img"
                 />
               </div>
               <div className="offering-content">
-                <span className="offering-badge">Einsteiger</span>
-                <h3>Yoga für Anfänger</h3>
+                <span className="offering-badge">Beginner</span>
+                <h3>Yoga for Beginners</h3>
                 <p style={{ fontSize: '0.9rem', marginBottom: '0' }}>
-                  Sanfter Einstieg in das klassische Hatha-Yoga. Wir erlernen grundlegende Körperhaltungen (Asanas), 
-                  bewusste Atemtechniken (Pranayama) und Entspannungsmethoden, um Verspannungen vorzubeugen.
+                  A gentle introduction to classical Hatha Yoga. We learn basic postures (asanas), 
+                  conscious breathing techniques (pranayama), and relaxation methods to prevent tension.
                 </p>
               </div>
             </div>
@@ -234,16 +232,16 @@ export default function Home() {
               <div className="offering-img-container">
                 <img 
                   src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=500" 
-                  alt="Yoga für alle" 
+                  alt="Yoga for everyone" 
                   className="offering-img"
                 />
               </div>
               <div className="offering-content">
-                <span className="offering-badge">Alle Level</span>
-                <h3>Yoga für alle</h3>
+                <span className="offering-badge">All Levels</span>
+                <h3>Yoga for Everyone</h3>
                 <p style={{ fontSize: '0.9rem', marginBottom: '0' }}>
-                  Ein abwechslungsreicher Flow, der Kräftigung, Dehnung und Entspannung vereint. 
-                  Die Übungen werden flexibel an die Teilnehmenden angepasst, sodass jeder im eigenen Tempo üben kann.
+                  A varied flow that combines strengthening, stretching, and relaxation. 
+                  The exercises are flexibly adapted to the participants, allowing everyone to practice at their own pace.
                 </p>
               </div>
             </div>
@@ -252,16 +250,16 @@ export default function Home() {
               <div className="offering-img-container">
                 <img 
                   src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=500" 
-                  alt="Yogatherapie" 
+                  alt="Yoga Therapy" 
                   className="offering-img"
                 />
               </div>
               <div className="offering-content">
-                <span className="offering-badge">Therapeutisch</span>
-                <h3>Yogatherapie</h3>
+                <span className="offering-badge">Therapeutic</span>
+                <h3>Yoga Therapy</h3>
                 <p style={{ fontSize: '0.9rem', marginBottom: '0' }}>
-                  Gezielte Übungsreihen zur Linderung von Alltagsbeschwerden (z.B. Rückenschmerzen, Stress). 
-                  Individuelle Anleitung hilft, ein gesundes Körperbewusstsein im Alltag aufzubauen.
+                  Targeted sequences to relieve everyday complaints (e.g. back pain, stress). 
+                  Individual guidance helps build a healthy body awareness in everyday life.
                 </p>
               </div>
             </div>
@@ -272,10 +270,10 @@ export default function Home() {
       {/* Schedule Section */}
       <section id="schedule" style={{ backgroundColor: 'rgba(143, 168, 155, 0.04)' }}>
         <div className="container">
-          <h2>Wochenplan</h2>
+          <h2>Weekly Schedule</h2>
           <p className="section-subtitle">
-            Melde dich gern für eine Probestunde an. Unsere Kurse finden in einer persönlichen 
-            Atmosphäre mit maximal 10 Personen statt.
+            Feel free to register for a trial class. Our classes take place in a personal 
+            atmosphere with a maximum of 10 people.
           </p>
 
           <div className="schedule-container">
@@ -308,15 +306,15 @@ export default function Home() {
       <section id="location">
         <div className="container location-grid">
           <div className="location-info">
-            <p className="hero-subtitle" style={{ marginBottom: '0.5rem' }}>Unsere Praxis</p>
-            <h2 style={{ textAlign: 'left', marginBottom: '2rem' }}>Besuche das Studio</h2>
+            <p className="hero-subtitle" style={{ marginBottom: '0.5rem' }}>Our Studio</p>
+            <h2 style={{ textAlign: 'left', marginBottom: '2rem' }}>Visit the Studio</h2>
             
             <div className="info-item">
               <div className="info-icon">
                 <MapPin size={20} />
               </div>
               <div className="info-text">
-                <h4>Standort</h4>
+                <h4>Address</h4>
                 <p style={{ margin: '0' }}>Am Tanzplan 3, 04179 Leipzig (Leutzsch)</p>
               </div>
             </div>
@@ -326,8 +324,8 @@ export default function Home() {
                 <Clock size={20} />
               </div>
               <div className="info-text">
-                <h4>Parken & Anfahrt</h4>
-                <p style={{ margin: '0' }}>Kostenlose Parkmöglichkeiten befinden sich direkt vor der Tür.</p>
+                <h4>Parking & Directions</h4>
+                <p style={{ margin: '0' }}>Free parking spaces are located directly in front of the door.</p>
               </div>
             </div>
 
@@ -336,9 +334,9 @@ export default function Home() {
                 <Info size={20} />
               </div>
               <div className="info-text">
-                <h4>Wichtig für deinen Besuch</h4>
+                <h4>Important for your visit</h4>
                 <p style={{ margin: '0', fontSize: '0.9rem' }}>
-                  Matten und Zubehör werden gestellt. Bitte sei ca. 10 Minuten vor Kursbeginn da, um entspannt anzukommen.
+                  Mats and props are provided. Please arrive about 10 minutes before class starts to arrive relaxed.
                 </p>
               </div>
             </div>
@@ -364,48 +362,48 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" style={{ backgroundColor: 'rgba(143, 168, 155, 0.04)' }}>
         <div className="container">
-          <h2>Preise & Karten</h2>
+          <h2>Pricing & Cards</h2>
           <p className="section-subtitle">
-            Transparente Preisgestaltung für deine regelmäßige Yogapraxis.
+            Transparent pricing for your regular yoga practice.
           </p>
 
           <div className="pricing-grid">
             <div className="price-card">
-              <h3>Probestunde</h3>
+              <h3>Trial Class</h3>
               <div className="price-amount">10 €</div>
-              <div className="price-unit">einmalig zum Kennenlernen</div>
+              <div className="price-unit">one-time to get to know us</div>
               <ul className="price-features">
-                <li>Volle 90 Minuten</li>
-                <li>Matte & Hilfsmittel inklusive</li>
-                <li>Wird bei Kauf einer 10er-Karte voll angerechnet</li>
+                <li>Full 90 minutes</li>
+                <li>Mat & props included</li>
+                <li>Fully credited on purchase of a 10-class card</li>
               </ul>
-              <a href="#contact" className="btn btn-secondary" style={{ marginLeft: '0' }}>Jetzt anfragen</a>
+              <a href="#contact" className="btn btn-secondary" style={{ marginLeft: '0' }}>Inquire Now</a>
             </div>
 
             <div className="price-card featured">
-              <div className="featured-label">Beliebt</div>
-              <h3>10-er-Karte</h3>
+              <div className="featured-label">Popular</div>
+              <h3>10-Class Card</h3>
               <div className="price-amount">110 €</div>
-              <div className="price-unit">gültig für 12 Wochen</div>
+              <div className="price-unit">valid for 12 weeks</div>
               <ul className="price-features">
-                <li>10 Klassen à 90 Minuten</li>
-                <li>Volle Flexibilität</li>
-                <li>Kleine Gruppen (max. 10 Personen)</li>
-                <li>Matte & Zubehör gratis gestellt</li>
+                <li>10 classes of 90 minutes each</li>
+                <li>Full flexibility</li>
+                <li>Small groups (max. 10 people)</li>
+                <li>Mat & props provided for free</li>
               </ul>
-              <a href="#contact" className="btn btn-primary">Jetzt sichern</a>
+              <a href="#contact" className="btn btn-primary">Get it Now</a>
             </div>
 
             <div className="price-card">
-              <h3>Einzelstunde</h3>
+              <h3>Single Class</h3>
               <div className="price-amount">15 €</div>
-              <div className="price-unit">pro Klasse (Drop-In)</div>
+              <div className="price-unit">per class (Drop-In)</div>
               <ul className="price-features">
-                <li>Einmalige Teilnahme</li>
-                <li>Ideal für unregelmäßige Praxis</li>
-                <li>Nach Absprache & Verfügbarkeit</li>
+                <li>One-time participation</li>
+                <li>Ideal for irregular practice</li>
+                <li>Subject to availability</li>
               </ul>
-              <a href="#contact" className="btn btn-secondary" style={{ marginLeft: '0' }}>Jetzt buchen</a>
+              <a href="#contact" className="btn btn-secondary" style={{ marginLeft: '0' }}>Book Now</a>
             </div>
           </div>
         </div>
@@ -415,11 +413,11 @@ export default function Home() {
       <section id="contact">
         <div className="container contact-grid">
           <div>
-            <p className="hero-subtitle" style={{ marginBottom: '0.5rem' }}>Verbindung aufnehmen</p>
-            <h2 style={{ textAlign: 'left', marginBottom: '2.5rem' }}>Kontakt & Anmeldung</h2>
+            <p className="hero-subtitle" style={{ marginBottom: '0.5rem' }}>Get in Touch</p>
+            <h2 style={{ textAlign: 'left', marginBottom: '2.5rem' }}>Contact & Registration</h2>
             <p style={{ fontSize: '1.05rem', marginBottom: '3rem' }}>
-              Hast du Fragen zu den Kursen, möchtest eine Probestunde vereinbaren oder dich für 
-              eine 10er-Karte anmelden? Schreib mir einfach eine Nachricht oder rufe direkt an!
+              Do you have questions about the classes, want to arrange a trial class, or register for 
+              a 10-class card? Just send me a message or call directly!
             </p>
 
             <div className="info-item">
@@ -427,9 +425,9 @@ export default function Home() {
                 <Phone size={18} />
               </div>
               <div className="info-text">
-                <h4>Telefon & Mobil</h4>
-                <p style={{ margin: '0' }}>Festnetz: 0341 / 49 570 111</p>
-                <p style={{ margin: '0' }}>Mobil: 0173 / 85 90 277</p>
+                <h4>Phone & Mobile</h4>
+                <p style={{ margin: '0' }}>Landline: 0341 / 49 570 111</p>
+                <p style={{ margin: '0' }}>Mobile: 0173 / 85 90 277</p>
               </div>
             </div>
 
@@ -438,7 +436,7 @@ export default function Home() {
                 <Mail size={18} />
               </div>
               <div className="info-text">
-                <h4>E-Mail</h4>
+                <h4>Email</h4>
                 <p style={{ margin: '0' }}>
                   <a href="mailto:info@ich-lebe-mich.de" style={{ color: 'inherit', textDecoration: 'none' }}>
                     info@ich-lebe-mich.de
@@ -464,10 +462,9 @@ export default function Home() {
                 }}>
                   <Check size={28} />
                 </div>
-                <h3 style={{ marginBottom: '1rem' }}>Vielen Dank!</h3>
+                <h3 style={{ marginBottom: '1rem' }}>Thank you!</h3>
                 <p>
-                  Deine Nachricht wurde erfolgreich gesendet. Ich werde mich so schnell wie möglich 
-                  bei dir melden.
+                  Your message has been sent successfully. I will get back to you as soon as possible.
                 </p>
               </div>
             ) : (
@@ -478,7 +475,7 @@ export default function Home() {
                     type="text" 
                     id="name" 
                     className="form-input" 
-                    placeholder="Dein Name" 
+                    placeholder="Your Name" 
                     required 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -486,12 +483,12 @@ export default function Home() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="email">E-Mail Adresse</label>
+                  <label className="form-label" htmlFor="email">Email Address</label>
                   <input 
                     type="email" 
                     id="email" 
                     className="form-input" 
-                    placeholder="Deine E-Mail Adresse" 
+                    placeholder="Your Email Address" 
                     required 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -499,25 +496,25 @@ export default function Home() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="inquiry">Anfrage für</label>
+                  <label className="form-label" htmlFor="inquiry">Request for</label>
                   <select 
                     id="inquiry" 
                     className="form-select"
                     value={inquiryType}
                     onChange={(e) => setInquiryType(e.target.value)}
                   >
-                    <option value="Probestunde">Probestunde vereinbaren (10 €)</option>
-                    <option value="10-er-Karte">10-er-Karte bestellen (110 €)</option>
-                    <option value="Allgemeine Anfrage">Allgemeine Anfrage / Frage</option>
+                    <option value="Probestunde">Book trial class (10 €)</option>
+                    <option value="10-er-Karte">Order 10-class card (110 €)</option>
+                    <option value="Allgemeine Anfrage">General inquiry / Question</option>
                   </select>
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="message">Nachricht</label>
+                  <label className="form-label" htmlFor="message">Message</label>
                   <textarea 
                     id="message" 
                     className="form-textarea" 
-                    placeholder="Wie kann ich dir helfen?" 
+                    placeholder="How can I help you?" 
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -530,7 +527,7 @@ export default function Home() {
                   </p>
                 )}
                 <button type="submit" className="submit-btn" disabled={isLoading}>
-                  {isLoading ? 'Wird gesendet...' : 'Nachricht senden'}
+                  {isLoading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}
@@ -544,35 +541,35 @@ export default function Home() {
           <div className="footer-brand">
             <h2>ich lebe mich</h2>
             <p>
-              Yoga Studio Leipzig Leutzsch. Kleine Gruppen, persönliche Atmosphäre und modernes Hatha-Yoga 
-              angepasst an deinen Alltag.
+              Yoga Studio Leipzig Leutzsch. Small groups, personal atmosphere, and modern Hatha Yoga 
+              adapted to your everyday life.
             </p>
           </div>
           
           <div className="footer-links">
             <div className="footer-col">
-              <h4>Praxis</h4>
+              <h4>Practice</h4>
               <ul>
-                <li><a href="#about">Über mich</a></li>
-                <li><a href="#offerings">Yoga-Stile</a></li>
-                <li><a href="#schedule">Kursplan</a></li>
-                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#offerings">Yoga Styles</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#pricing">Pricing</a></li>
               </ul>
             </div>
             
             <div className="footer-col">
-              <h4>Rechtliches</h4>
+              <h4>Legal</h4>
               <ul>
-                <li><Link href="/impressum">Impressum</Link></li>
-                <li><Link href="/datenschutz">Datenschutz</Link></li>
+                <li><Link href="/impressum">Imprint</Link></li>
+                <li><Link href="/datenschutz">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
         </div>
 
         <div className="container footer-bottom">
-          <div>© {new Date().getFullYear()} ich lebe mich. Alle Rechte vorbehalten.</div>
-          <div>Mit Liebe gestaltet für Bianka Schümann</div>
+          <div>© {new Date().getFullYear()} ich lebe mich. All rights reserved.</div>
+          <div>Made with love for Bianka Schümann</div>
         </div>
       </footer>
       <CookieBanner />

@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)
+  const pathname = usePathname()
+  const isEn = pathname?.startsWith('/en')
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -64,14 +67,26 @@ export default function CookieBanner() {
       
       <div className="cookie-banner-wrapper" style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: '0.25rem' }}>
         <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--color-charcoal)', fontWeight: '500' }}>
-          Cookie-Einwilligung
+          {isEn ? 'Cookie Consent' : 'Cookie-Einwilligung'}
         </p>
         <p style={{ margin: 0, fontSize: '0.82rem', color: '#6C7A74', lineHeight: '1.5' }}>
-          Wir verwenden nur technisch notwendige Cookies, um Ihr Nutzungserlebnis auf unserer Website zu verbessern. 
-          Weitere Informationen finden Sie in unserer{' '}
-          <Link href="/datenschutz" style={{ color: 'var(--color-sage)', textDecoration: 'underline' }}>
-            Datenschutzerklärung
-          </Link>.
+          {isEn ? (
+            <>
+              We only use technically necessary cookies to improve your experience on our website. 
+              Further information can be found in our{' '}
+              <Link href="/datenschutz" style={{ color: 'var(--color-sage)', textDecoration: 'underline' }}>
+                Privacy Policy
+              </Link>.
+            </>
+          ) : (
+            <>
+              Wir verwenden nur technisch notwendige Cookies, um Ihr Nutzungserlebnis auf unserer Website zu verbessern. 
+              Weitere Informationen finden Sie in unserer{' '}
+              <Link href="/datenschutz" style={{ color: 'var(--color-sage)', textDecoration: 'underline' }}>
+                Datenschutzerklärung
+              </Link>.
+            </>
+          )}
         </p>
       </div>
 
@@ -92,7 +107,7 @@ export default function CookieBanner() {
           onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-charcoal)'; e.currentTarget.style.color = 'var(--bg-cream)'; }}
           onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--color-charcoal)'; }}
         >
-          Ablehnen
+          {isEn ? 'Decline' : 'Ablehnen'}
         </button>
         <button 
           onClick={handleAccept} 
@@ -110,7 +125,7 @@ export default function CookieBanner() {
           onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-sage-hover)'}
           onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-sage)'}
         >
-          Akzeptieren
+          {isEn ? 'Accept' : 'Akzeptieren'}
         </button>
       </div>
     </div>
