@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { MapPin, Phone, Mail, Calendar, Info, Clock, Check, Send } from 'lucide-react'
+import Link from 'next/link'
+import CookieBanner from '@/components/CookieBanner'
 
 // Custom Feather SVG Logo Component
 function FeatherLogo() {
@@ -36,12 +38,30 @@ export default function Home() {
   const [inquiryType, setInquiryType] = useState('Allgemeine Anfrage')
   const [message, setMessage] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Mock submit log
-    console.log('Form submitted:', { name, email, inquiryType, message })
-    setIsSubmitted(true)
+    setIsLoading(true)
+    setSubmitError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, inquiryType, message })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setIsSubmitted(true)
+      } else {
+        setSubmitError(data.error || 'Es gab ein Problem beim Senden. Bitte versuche es erneut.')
+      }
+    } catch (err) {
+      setSubmitError('Verbindung zum Server fehlgeschlagen.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   // Current German schedule data
@@ -494,8 +514,13 @@ export default function Home() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="submit-btn">
-                  Nachricht senden
+                {submitError && (
+                  <p style={{ color: '#D53B41', fontSize: '0.85rem', marginBottom: '1rem', fontWeight: '500' }}>
+                    {submitError}
+                  </p>
+                )}
+                <button type="submit" className="submit-btn" disabled={isLoading}>
+                  {isLoading ? 'Wird gesendet...' : 'Nachricht senden'}
                 </button>
               </form>
             )}
@@ -528,8 +553,8 @@ export default function Home() {
             <div className="footer-col">
               <h4>Rechtliches</h4>
               <ul>
-                <li><a href="#">Impressum</a></li>
-                <li><a href="#">Datenschutz</a></li>
+                <li><Link href="/impressum">Impressum</Link></li>
+                <li><Link href="/datenschutz">Datenschutz</Link></li>
               </ul>
             </div>
           </div>
@@ -540,6 +565,7 @@ export default function Home() {
           <div>Mit Liebe gestaltet für Bianka Schümann</div>
         </div>
       </footer>
+      <CookieBanner />
     </>
   )
 }
