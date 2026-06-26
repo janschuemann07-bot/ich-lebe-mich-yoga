@@ -145,7 +145,7 @@ export default function Home() {
           <div className="hero-image-container">
             {/* Visual background image of studio */}
             <img 
-              src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80&w=800" 
+              src="https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?auto=format&fit=crop&q=80&w=800" 
               alt="Serene Yoga Studio Space" 
               className="hero-img" 
             />
@@ -158,7 +158,7 @@ export default function Home() {
         <div className="container about-grid">
           <div className="about-image-container">
             <img 
-              src="https://images.unsplash.com/photo-1594744803329-e58b31de215f?auto=format&fit=crop&q=80&w=800" 
+              src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800" 
               alt="Bianka Schümann - Yogalehrerin" 
               className="about-img" 
             />
@@ -205,7 +205,7 @@ export default function Home() {
             <div className="offering-card">
               <div className="offering-img-container">
                 <img 
-                  src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=500" 
+                  src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=500" 
                   alt="Yoga für Anfänger" 
                   className="offering-img"
                 />
@@ -223,7 +223,7 @@ export default function Home() {
             <div className="offering-card">
               <div className="offering-img-container">
                 <img 
-                  src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=500" 
+                  src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=500" 
                   alt="Yoga für alle" 
                   className="offering-img"
                 />
@@ -241,7 +241,7 @@ export default function Home() {
             <div className="offering-card">
               <div className="offering-img-container">
                 <img 
-                  src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=500" 
+                  src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=500" 
                   alt="Yogatherapie" 
                   className="offering-img"
                 />
@@ -336,16 +336,16 @@ export default function Home() {
 
           <div className="gallery-grid">
             <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400" alt="Studio details" />
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=400" alt="Studio details" />
             </div>
             <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=400" alt="Yoga mat and blocks" />
+              <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80&w=400" alt="Yoga mat and blocks" />
             </div>
             <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?auto=format&fit=crop&q=80&w=400" alt="Plants in the studio" />
+              <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=400" alt="Plants in the studio" />
             </div>
             <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=400" alt="Meditation area" />
+              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=400" alt="Meditation area" />
             </div>
           </div>
         </div>
