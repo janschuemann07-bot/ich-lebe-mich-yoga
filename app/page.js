@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { MapPin, Phone, Mail, Calendar, Info, Clock, Check, Send } from 'lucide-react'
+import { MapPin, Phone, Mail, Calendar, Info, Clock, Check, Send, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import CookieBanner from '@/components/CookieBanner'
 
@@ -32,7 +32,8 @@ function FeatherLogo() {
 }
 
 export default function Home() {
-  // Contact form states
+  // Navigation & Form states
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [inquiryType, setInquiryType] = useState('Allgemeine Anfrage')
@@ -109,15 +110,23 @@ export default function Home() {
             <span>ich lebe mich</span>
           </a>
           
-          <nav>
+          <button 
+            className="mobile-menu-toggle" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Menü umschalten"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          <nav className={`nav-menu-wrapper ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <ul className="nav-menu">
-              <li><a href="#about" className="nav-link">Über mich</a></li>
-              <li><a href="#offerings" className="nav-link">Yoga-Stile</a></li>
-              <li><a href="#schedule" className="nav-link">Kursplan</a></li>
-              <li><a href="#pricing" className="nav-link">Preise</a></li>
-              <li><a href="#contact" className="nav-link">Kontakt</a></li>
+              <li><a href="#about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Über mich</a></li>
+              <li><a href="#offerings" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Yoga-Stile</a></li>
+              <li><a href="#schedule" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Kursplan</a></li>
+              <li><a href="#pricing" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Preise</a></li>
+              <li><a href="#contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Kontakt</a></li>
               <li>
-                <a href="#contact" className="btn btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>
+                <a href="#contact" className="btn btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }} onClick={() => setIsMobileMenuOpen(false)}>
                   Jetzt anfragen
                 </a>
               </li>
@@ -184,7 +193,7 @@ export default function Home() {
             <div className="quote-box">
               <p className="quote-text">
                 „Es bedarf keiner besonderen Fähigkeiten, um Yoga zu praktizieren. Jeder kann den Yoga-Weg wählen. 
-                Jeder macht, was er kann – und zwar so gut, wie es jetzt eben geht.“
+                Jeder macht, was er kann, und zwar so gut, wie es jetzt eben geht.“
               </p>
               <p className="quote-author">Bianka Schümann</p>
             </div>
@@ -232,8 +241,8 @@ export default function Home() {
                 <span className="offering-badge">Alle Level</span>
                 <h3>Yoga für alle</h3>
                 <p style={{ fontSize: '0.9rem', marginBottom: '0' }}>
-                  Ein abwechslungsreicher Flow, der Kräftigung, Dehnung und Entspannung vereint. Die Übungen 
-                  werden flexibel auf die Teilnehmenden angepasst – jeder übt so, wie es am besten geht.
+                  Ein abwechslungsreicher Flow, der Kräftigung, Dehnung und Entspannung vereint. 
+                  Die Übungen werden flexibel an die Teilnehmenden angepasst, sodass jeder im eigenen Tempo üben kann.
                 </p>
               </div>
             </div>
